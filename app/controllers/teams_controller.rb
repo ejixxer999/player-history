@@ -20,10 +20,14 @@ class TeamsController < ApplicationController
     end 
 
     def index
-        
+        if params [:city_id] && city = City.find_by_id(params[:city_id])
+            @teams = city.team
+        else
+            if params[]
     end 
 
     def show 
+        
     end 
 
     def edit 
