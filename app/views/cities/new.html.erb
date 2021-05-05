@@ -1,0 +1,9 @@
+<h1>Don't See Your City?</h1>
+<%= form_for (@city) do |h| %>
+<%= h.label :name %>
+<%= h.text_field :name %>
+<br>
+<%= h.label :state %>
+<%= h.text_field :state %>
+<%= h.submit "Enter City" %>
+<% end %>
