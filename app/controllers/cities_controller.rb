@@ -4,21 +4,23 @@ class CitiesController < ApplicationController
     end 
 
     def create
-        @city = City.new(city_params)
-        # @city.name = params[:name]
-        # @city.state = params[:state]
+        @city = current_user.cities.new(city_params)
+        @city = current_user.cities.build(city_params)
+        
         if
             @city.save!
-            redirect_to cities_path(@city)
+           
+            redirect_to city_path(@city)
         else
             render new
         end 
+       
     end 
 
   
 
     def index
-        @cities = City.all
+        @cities = City.all.order_by_name
     end
 
     def show
