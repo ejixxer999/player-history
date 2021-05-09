@@ -1,0 +1,6 @@
+<h1>All Teams</h1>
+<% @teams.each_with_index do |t, index| %>
+<ul>
+<%= link_to "#{index + 1}. #{t.name}", team_path(t) %>
+</ul>
+<% end %>
