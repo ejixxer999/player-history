@@ -1,0 +1,15 @@
+<h1>What Team you Reppin?</h1>
+
+<%= form_for @team do |t| %>
+<%= t.label :name %>
+<%= t.text_field :name %>
+<br>
+<%= t.label "Select a City" %>
+<%= t.collection_select :city_id, City.all.order_by_name, :id, :name, prompt: true %>
+<%= t.hidden_field :user_id %>
+<br><br>
+<%= t.submit "Submit Your Team" %>
+<% end %>
+
+<p>Don't See Your City?</p>
+<%= link_to "add a city", new_city_path %>
