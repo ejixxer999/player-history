@@ -1,5 +1,13 @@
 <h1>All Cities</h1>
 
-<% @cities.each do |h| %>
-<%= link_to h.name, cities_path(h) %>
+<% @cities.each_with_index do |h, index| %>
+<ul>
+<%= link_to "#{index + 1}. #{h.name}", city_path(h) %>
+</ul>
+
 <% end %>
+
+<p>Don't See Your City?</p>
+<%= link_to "add a city", new_city_path %>
+
+
