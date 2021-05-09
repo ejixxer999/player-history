@@ -5,7 +5,6 @@ class TeamsController < ApplicationController
             @team = city.teams.build
         else
             @team = Team.new
-            @team.build_city
         end
     end 
     
@@ -20,13 +19,20 @@ class TeamsController < ApplicationController
     end 
 
     def index
-        if params [:city_id] && city = City.find_by_id(params[:city_id])
-            @teams = city.team
+        if params[:city_id]
+            @city = City.find_by(id: params[:city_id])
+            if @city.nil?
+                redirect_to cities_path
+            else
+                @teams = @city.teams
+            end
         else
-            if params[]
+            @teams = Team.all
+        end
     end 
 
     def show 
+        @team = Team.find_by_id(params[:id])
         
     end 
 
@@ -37,7 +43,11 @@ class TeamsController < ApplicationController
     end 
 
     private 
+
+    def set_teams
+        @team = Team.find_by_id(params[:id])
+    end
     def team_params
-        params.require(:team).permit(:name, :user_id, :city_id )
+        params.require(:team).permit(:name, :user_id, :city_id, city_attributes: [:name, :state])
     end 
 end
