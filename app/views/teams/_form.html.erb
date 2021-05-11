@@ -1,0 +1,10 @@
+<%= form_for @team do |t| %>
+<%= t.label :name %>
+<%= t.text_field :name %>
+<br>
+<%= t.label "Select a City" %>
+<%= t.collection_select :city_id, City.all.order_by_name, :id, :name, prompt: true %>
+<%= t.hidden_field :user_id %>
+<br><br>
+<%= t.submit "Submit Your Team" %>
+<% end %>
