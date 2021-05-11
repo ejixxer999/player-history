@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-
+        before_action :security
     def new
         if params[:city_id] && city = City.find_by_id(params[:city_id])
             @team = city.teams.build
