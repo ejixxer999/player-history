@@ -9,8 +9,7 @@ class CitiesController < ApplicationController
         
         if
             @city.save!
-           
-            redirect_to city_path(@city)
+           redirect_to cities_path
         else
             render new
         end 
