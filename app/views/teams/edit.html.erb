@@ -1,0 +1,8 @@
+<h1>Edit Teams</h1>
+<%= form_for(@team) do |t| %>
+<% t.hidden_field :user_id %>
+<% t.hidden_field :city_id %>
+<%= t.label :name %>
+<%= t.text_field :name %>
+<%= t.submit "Update Team" %>
+<% end %>
