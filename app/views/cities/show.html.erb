@@ -1,5 +1,14 @@
 <h1><%= @city.name.upcase %> </h1>
-<strong>Team Name: </strong> <%= @team.name %><br />
+<%= "State: #{@city.state}" %>
+<br>
+<ul>
 
 
 
+
+
+<% @city.teams.each do |team| %>
+      <ul>
+        <td><%= link_to team.name, team_path(team) %></td>
+      </ul>
+    <% end %>
