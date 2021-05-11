@@ -1,4 +1,7 @@
 class CitiesController < ApplicationController
+     before_action :security
+
+
     def new
         @city = City.new
     end 
@@ -8,7 +11,7 @@ class CitiesController < ApplicationController
         @city = current_user.cities.build(city_params)
         
         if
-            @city.save!
+            @city.save
            redirect_to cities_path
         else
             render new
